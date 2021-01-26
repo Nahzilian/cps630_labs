@@ -2,6 +2,11 @@ td{
   width: 250px;
   height: 200px;
   border: 1px solid black;
+  transition: 250ms ease-in;
+}
+
+td:hover{
+  background-color: #ff000044;
 }
 
 table.devices{
@@ -17,4 +22,9 @@ table.devices button{
   width: 10px;
   height: 2rem;
   margin: 1px 1.5%;
+}
+
+h1::first-letter{
+  color: green;
+  font-size: 5rem;
 }
