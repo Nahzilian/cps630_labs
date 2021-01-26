@@ -15,13 +15,14 @@ table.devices{
 table.devices img{
   width: 100%;
   height: 100%;
-  float:right;
+  float: right;
 }
 
-table.devices button{
-  width: 10px;
-  height: 2rem;
-  margin: 1px 1.5%;
+.stack-buttons{
+    width: 250px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
 }
 
 h1::first-letter{
