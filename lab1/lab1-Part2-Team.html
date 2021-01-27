@@ -45,8 +45,10 @@
         </thead>
         <tr>
             <td>
-                <input type="radio" name="fin-image" value="">Fade-in Image
-                <input type="radio" name="fout-image" value="">Fade-out Image
+                <input type="radio" name="animation-image" value="" id="fadein-img" checked>
+                <label for="fadein-img">Fade-in Image</label>
+                <input type="radio" name="animation-image" value="" id="fadeout-img">
+                <label for="fadeout-img">Fade-out Image</label>
                 <img src="./imgs/labtop.jpeg" alt="labtop" id="image1">
             </td>
             <td name='row'></td>
@@ -58,8 +60,10 @@
                 <button type="button" name="button">Edit</button>
                 <button type="button" name="button">Delete</button>
                 <button type="button" name="button">Collection</button>
-                <input type="radio" name="fin-info" value="">Fade-in Information
-                <input type="radio" name="fout-info" value="">Fade-out Information
+                <input type="radio" id="fin-info" name = "animation-context" value="" checked>
+                <label for="fin-info">Fade-in Info</label>
+                <input type="radio" id="fout-info" name = "animation-context" value="">
+                <label for="fout-info">Fade-out Info</label>
             </td>
         </tr>
         <tr>
@@ -101,19 +105,19 @@
 
 <script>
     $(document).ready(function(){
-    $("input[name ='fout-image']").click(function(){
+    $("#fadeout-img").click(function(){
         $('img').fadeOut();
     });
-    $("input[name ='fin-image']").click(function(){
+    $("#fadein-img").click(function(){
         $('img').fadeIn();
     });
     });
 
     $(document).ready(function(){
-    $("input[name ='fout-info']").click(function(){
+    $("#fout-info").click(function(){
         $('td[name ="row"]').fadeOut();
     });
-    $("input[name ='fin-info']").click(function(){
+    $("#fin-info").click(function(){
         $('td[name ="row"]').fadeIn();
     });
     });
