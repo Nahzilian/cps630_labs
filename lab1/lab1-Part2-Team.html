@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./stylesheets/lab1-Part1-Team.css">
+    <title>Electronics-Center</title>
+    <link href="./stylesheets/lab1-Part1-Team.css" rel="stylesheets">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <h1>Electronics-Center</h1>
+    <form>
+        <input type="text" id="abt-inp" name="abt-inp" placeholder="Type in ..."><br><br>
+        <label for="electronic-types">Type</label>
+        <select id="electronic-types" name="elec-types">
+            <option value="LapTop">0. LapTop</option>
+            <option value="NoteBook">1. NoteBook</option>
+            <option value="Tablet">2. Tablet</option>
+            <option value="CellPhone">3. CellPhone</option>
+        </select>
+        <label for="action-types">Action</label>
+        <select id="electronic-types" name="elec-types">
+            <option value="Archive">0. Archive</option>
+            <option value="Edit">1. Edit</option>
+            <option value="Delete">2. Delete</option>
+            <option value="Collection">3. Collection</option>
+        </select>
+        <input type="submit">
+    </form>
+
+    <table class="devices">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Year</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                <input type="radio" name="fin-image" value="">Fade-in Image
+                <input type="radio" name="fout-image" value="">Fade-out Image
+                <img src="./imgs/labtop.jpeg" alt="labtop" id="image1">
+            </td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td class = "stack-buttons">
+                <button type="button" name="button">Archive</button>
+                <button type="button" name="button">Edit</button>
+                <button type="button" name="button">Delete</button>
+                <button type="button" name="button">Collection</button>
+                <input type="radio" name="fin-info" value="">Fade-in Information
+                <input type="radio" name="fout-info" value="">Fade-out Information
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" name="" value="">
+                <input type="radio" name="" value="">
+                <img src="./imgs/tablet.jpg" alt="labtop">
+            </td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td class = "stack-buttons">
+                <button type="button" name="button">Archive</button>
+                <button type="button" name="button">Edit</button>
+                <button type="button" name="button">Delete</button>
+                <button type="button" name="button">Collection</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="radio" name="" value="">
+                <input type="radio" name="" value="">
+                <img src="./imgs/phone.jpg" alt="labtop">
+            </td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td name='row'></td>
+            <td class = "stack-buttons">
+                <button type="button" name="button">Archive</button>
+                <button type="button" name="button">Edit</button>
+                <button type="button" name="button">Delete</button>
+                <button type="button" name="button">Collection</button>
+            </td>
+        </tr>
+    </table>
+</body>
+
+<script>
+    $(document).ready(function(){
+    $("input[name ='fout-image']").click(function(){
+        $('img').fadeOut();
+    });
+    $("input[name ='fin-image']").click(function(){
+        $('img').fadeIn();
+    });
+    });
+
+    $(document).ready(function(){
+    $("input[name ='fout-info']").click(function(){
+        $('td[name ="row"]').fadeOut();
+    });
+    $("input[name ='fin-info']").click(function(){
+        $('td[name ="row"]').fadeIn();
+    });
+    });
+</script>
+
+</html>
