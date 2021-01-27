@@ -45,30 +45,26 @@
         </thead>
         <tr>
             <td>
-                <input type="radio" name="animation-image" value="" id="fadein-img" checked>
-                <label for="fadein-img">Fade-in Image</label>
-                <input type="radio" name="animation-image" value="" id="fadeout-img">
-                <label for="fadeout-img">Fade-out Image</label>
+                <input type="radio" name="fade1" value="" onclick="$('#image1').fadeIn()" checked>Fade-in
+                <input type="radio" name="fade1" value="" onclick="$('#image1').fadeOut()">Fade-out
                 <img src="./imgs/labtop.jpeg" alt="labtop" id="image1">
             </td>
             <td name='row1'></td>
             <td name='row1'></td>
             <td name='row1'></td>
             <td name='row1'></td>
-            <td class = "stack-buttons">
+            <td class="stack-buttons">
                 <button type="button" name="button">Archive</button>
                 <button type="button" name="button">Edit</button>
                 <button type="button" name="button">Delete</button>
                 <button type="button" name="button">Collection</button>
-                <input type="radio" id="fin-info" name = "animation-context" value="" checked>
-                <label for="fin-info">Fade-in Info</label>
-                <input type="radio" id="fout-info" name = "animation-context" value="">
-                <label for="fout-info">Fade-out Info</label>
+                <input type="radio" name="fadei1" value="" onclick="$('td[name =\'row1\']').fadeIn()" checked>Fade-in
+                <input type="radio" name="fadei1" value="" onclick="$('td[name =\'row1\']').fadeOut()">Fade-out
             </td>
         </tr>
         <tr>
             <td>
-                <input type="radio" name="fade2" value="" onclick="$('#image2').fadeIn()">Fade-in
+                <input type="radio" name="fade2" value="" onclick="$('#image2').fadeIn()" checked>Fade-in
                 <input type="radio" name="fade2" value="" onclick="$('#image2').fadeOut()">Fade-out
                 <img src="./imgs/tablet.jpg" alt="labtop" id="image2">
             </td>
@@ -76,18 +72,18 @@
             <td name='row2'></td>
             <td name='row2'></td>
             <td name='row2'></td>
-            <td class = "stack-buttons">
+            <td class="stack-buttons">
                 <button type="button" name="button">Archive</button>
                 <button type="button" name="button">Edit</button>
                 <button type="button" name="button">Delete</button>
                 <button type="button" name="button">Collection</button>
-                <input type="radio" name="fadei2" value="" onclick="$('td[name =\'row2\']').fadeIn()">Fade-in
+                <input type="radio" name="fadei2" value="" onclick="$('td[name =\'row2\']').fadeIn()" checked>Fade-in
                 <input type="radio" name="fadei2" value="" onclick="$('td[name =\'row2\']').fadeOut()">Fade-out
             </td>
         </tr>
         <tr>
             <td>
-                <input type="radio" name="fade3" value="" onclick="$('#image3').fadeIn()">Fade-in
+                <input type="radio" name="fade3" value="" onclick="$('#image3').fadeIn()" checked>Fade-in
                 <input type="radio" name="fade3" value="" onclick="$('#image3').fadeOut()">Fade-out
                 <img src="./imgs/phone.jpg" alt="labtop" id="image3">
             </td>
@@ -95,36 +91,16 @@
             <td name='row3'></td>
             <td name='row3'></td>
             <td name='row3'></td>
-            <td class = "stack-buttons">
+            <td class="stack-buttons">
                 <button type="button" name="button">Archive</button>
                 <button type="button" name="button">Edit</button>
                 <button type="button" name="button">Delete</button>
                 <button type="button" name="button">Collection</button>
-                <input type="radio" name="fadei3" value="" onclick="$('td[name =\'row3\']').fadeIn()">Fade-in
+                <input type="radio" name="fadei3" value="" onclick="$('td[name =\'row3\']').fadeIn()" checked>Fade-in
                 <input type="radio" name="fadei3" value="" onclick="$('td[name =\'row3\']').fadeOut()">Fade-out
             </td>
         </tr>
     </table>
 </body>
-
-<script>
-    $(document).ready(function(){
-    $("#fadeout-img").click(function(){
-        $('img').fadeOut();
-    });
-    $("#fadein-img").click(function(){
-        $('img').fadeIn();
-    });
-    });
-
-    $(document).ready(function(){
-    $("#fout-info").click(function(){
-        $('td[name ="row"]').fadeOut();
-    });
-    $("#fin-info").click(function(){
-        $('td[name ="row"]').fadeIn();
-    });
-    });
-</script>
 
 </html>
