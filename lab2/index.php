@@ -11,9 +11,9 @@
 <body>
   <?php
   $servername = "127.0.0.1";
-  $username = "root";
-  $password = "";
-  $dbname = "test";
+  $username = "suren";
+  $password = "Root@3859";
+  $dbname = "art";
   $conn = mysqli_connect($servername, $username, $password, $dbname);
   if ($_GET['clear'] === 'clear') {
     $del = "DROP TABLES art_work";
@@ -21,9 +21,9 @@
       die("Connection failed: " . mysqli_connect_error());
     }
     if ($conn->query($del) === TRUE) {
-      echo 'Dropped all data';
+      echo "<div class='success'>Dropped all data</div>";
     } else {
-      echo "Error deleting record"; // display error message if not delete
+      echo "<div class='fail'>Error deleting record</div>"; // display error message if not delete
     }
   } else {
     $genre = $_GET['genre'] ?? NULL;
@@ -53,12 +53,12 @@
       }
       // Create table if not existed
       if ($conn->query($sql) === TRUE) {
-        echo "Table Student Records created successfully <br/>";
+        echo "<div class='success'>Table Student Records created successfully </div>";
       } else {
         echo $conn->error;
       }
       if ($conn->query($sqlInsert) === TRUE) {
-        echo "Added successfuly<br/>";
+        echo "<div class='success'>Added successfuly</div>";
       } else {
         echo "Failed to add<br/>";
       }
@@ -123,9 +123,9 @@
 
         <?php
         $servername = "127.0.0.1";
-        $username = "root";
-        $password = "";
-        $dbname = "test";
+        $username = "suren";
+        $password = "Root@3859";
+        $dbname = "art";
         $conn = mysqli_connect($servername, $username, $password, $dbname);
         $sqldata = "SELECT id,gerne,typeof,specification,art_year,artname FROM art_work";
         $result = $conn->query($sqldata);
@@ -169,6 +169,8 @@
       // createCookie("muse", muse);
     });
 
+    $('div.success').fadeOut(3500)
+    $('div.fail').fadeOut(5500)
     function createCookie(name, value, days) {
       var expires;
       if (days) {

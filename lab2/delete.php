@@ -1,9 +1,9 @@
 <?php
 $id = $_GET['id']; // get id through query string
 $servername = "127.0.0.1";
-$username = "root";
-$password = "";
-$dbname = "test";
+$username = "suren";
+$password = "Root@3859";
+$dbname = "art";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 $del="delete from art_work where id = '$id'";
@@ -21,4 +21,3 @@ if ($conn->query($del) === TRUE) {
     echo "<br/><a href='index.php'>Return to homepage</a>";
 }
 ?>
-

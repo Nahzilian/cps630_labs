@@ -27,3 +27,21 @@ table{
 thead{
   background-color: #ff00ff44;
 }
+
+div.success{
+  background-color: #55ff5588;
+  border: 2px solid #55aa55;
+  border-radius: 33%;
+  width: 50em;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+div.fail{
+  background-color: #ff555588;
+  border: 2px solid #aa5555;
+  border-radius: 33%;
+  width: 50em;
+  margin: 20px auto;
+  padding: 20px;
+}
