@@ -16,5 +16,9 @@ if ($conn->query($del) === TRUE) {
     header("location:index.php"); // redirects to all records page
     exit;
 } else {
+    $conn->close();
     echo "Error deleting record"; // display error message if not delete
+    echo "<br/><a href='index.php'>Return to homepage</a>";
 }
+?>
+

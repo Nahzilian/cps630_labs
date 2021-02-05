@@ -10,65 +10,64 @@
 
 <body>
   <?php
-  $genre = $_GET['genre'] ?? NULL;
-  $type = $_GET['type'] ?? NULL;
-  $spec = $_GET['specification'] ?? NULL;
-  $year = $_GET['year'] ?? NULL;
-  $muse = $_GET['name'] ?? NULL;
-  if (!is_null($genre) && !is_null($type) && !is_null($spec) && !is_null($year) && !is_null($muse)) {
-    $artwork[] = array($genre, $type, $spec, $year, $muse);
-    $servername = "127.0.0.1";
-    $username = "root";
-    $password = "";
-    $dbname = "test";
-
-    $sqldata = "SELECT gerne,typeof,specification,art_year,artname FROM art_work";
-
-    $sql = "CREATE TABLE art_work (
-      id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-      gerne VARCHAR(30) NOT NULL,
-      typeof VARCHAR(30) NOT NULL,
-      specification VARCHAR(50),
-      art_year VARCHAR(30),
-      artname VARCHAR(30) NOT NULL
-  )";
-
-    $format = "INSERT INTO %s (gerne,typeof,specification,art_year,artname) VALUES ('%s','%s','%s','%s','%s')";
-
-    $sqlInsert = sprintf($format, "art_work", strval($genre), strval($type), strval($spec), strval($year), strval($muse));
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
+  $servername = "127.0.0.1";
+  $username = "root";
+  $password = "";
+  $dbname = "test";
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  if ($_GET['clear'] === 'clear') {
+    $del = "DROP TABLES art_work";
     if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());
     }
-
-    if ($conn->query($sqldata) === TRUE) {
-      if ($conn->query($sqlInsert) === TRUE) {
-        echo "Added successfuly";
-      } else {
-        echo "Failed to add";
-      }
+    if ($conn->query($del) === TRUE) {
+      echo 'Dropped all data';
     } else {
+      echo "Error deleting record"; // display error message if not delete
+    }
+  } else {
+    $genre = $_GET['genre'] ?? NULL;
+    $type = $_GET['type'] ?? NULL;
+    $spec = $_GET['specification'] ?? NULL;
+    $year = $_GET['year'] ?? NULL;
+    $muse = $_GET['name'] ?? NULL;
+
+    if (!is_null($genre) && !is_null($type) && !is_null($spec) && !is_null($year) && !is_null($muse)) {
+      $sql = "CREATE TABLE IF NOT EXISTS art_work (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        gerne VARCHAR(30) NOT NULL,
+        typeof VARCHAR(30) NOT NULL,
+        specification VARCHAR(50),
+        art_year VARCHAR(30),
+        artname VARCHAR(30) NOT NULL
+    )";
+
+      $format = "INSERT INTO %s (gerne,typeof,specification,art_year,artname) VALUES ('%s','%s','%s','%s','%s')";
+
+      $sqlInsert = sprintf($format, "art_work", strval($genre), strval($type), strval($spec), strval($year), strval($muse));
+      // Create connection
+      $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+      if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error()) . "<br/>";
+      }
+      // Create table if not existed
       if ($conn->query($sql) === TRUE) {
-        echo "Table Student Records created successfully";
+        echo "Table Student Records created successfully <br/>";
       } else {
-        echo "Error creating table: " . $conn->error;
+        echo $conn->error;
       }
       if ($conn->query($sqlInsert) === TRUE) {
-        echo "Added successfuly";
+        echo "Added successfuly<br/>";
       } else {
-        echo "Failed to add " . $conn->error;
+        echo "Failed to add<br/>";
       }
-      echo $sqlInsert;
     }
-
     $conn->close();
   }
 
 
   ?>
-
   <h1>Art Work Database</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
@@ -104,7 +103,7 @@
     <input class="muse" type="text" name="name" value="">
     <div class="container">
       <input class="save" type="submit" value="save">
-      <input type="submit" name="submit" value="clear">
+      <input type="submit" name="clear" value="clear">
     </div>
   </form>
   <div class="records">
@@ -123,7 +122,6 @@
         ?>
 
         <?php
-
         $servername = "127.0.0.1";
         $username = "root";
         $password = "";
@@ -134,7 +132,6 @@
         if ($result->num_rows > 0) {
           while ($row = $result->fetch_assoc()) {
             echo "<tr><td>" . $row["gerne"] . "</td><td>" . $row["typeof"] . "</td><td>" . $row["specification"] . "</td><td>" . $row["art_year"] . "</td><td>" . $row["artname"] . "<td><a href='delete.php?id=" . $row['id'] . "'>Delete</a></td></tr>";
-            
           }
         } else {
           echo "0 results";
