@@ -11,8 +11,8 @@
 <body>
   <?php
   $servername = "127.0.0.1";
-  $username = "suren";
-  $password = "Root@3859";
+  $username = "root";
+  $password = "";
   $dbname = "art";
   $conn = mysqli_connect($servername, $username, $password, $dbname);
   if ($_GET['clear'] === 'clear') {
@@ -120,11 +120,14 @@
         <?php if (isset($_GET['submit']))
           unset($artwork);
         ?>
+        <tr>
+          <td id="genre"></td><td id="type"></td><td id="spec"></td><td id="art_year"></td><td id="artname">"<td>
+        </tr>
 
         <?php
         $servername = "127.0.0.1";
-        $username = "suren";
-        $password = "Root@3859";
+        $username = "root";
+        $password = "";
         $dbname = "art";
         $conn = mysqli_connect($servername, $username, $password, $dbname);
         $sqldata = "SELECT id,gerne,typeof,specification,art_year,artname FROM art_work";
@@ -143,6 +146,65 @@
   </div>
 
   <script type="text/javascript">
+    // let gen = $(".genre");
+    // let type = $(".type");
+    class handleEvents{
+        constructor(){
+          this.selections = [$(".genre"), $(".type"), $('.specification')];
+          this.fields = [$('.year'), $('.muse')];
+          this.tds = [$('#genre'), $('#type'), $('#spec'), $("#art_year"), $("#artname")];
+        }
+        update_selections(){
+          for (var select = 0; select < this.selections.length; select++) {
+              this.selections[select].click(()=>{
+                this.update_table(this.selections);
+              });
+              this.selections[select].change(()=>{
+                this.update_table(this.selections);
+              });
+          }
+        }
+
+        update_fields(){
+          for (var i = 0; i < this.fields.length; i++) {
+            this.fields[i].change(()=>{
+              this.update_table(this.fields);
+            });
+            this.fields[i].click(()=>{
+              this.update_table(this.fields);
+            });
+            this.fields[i].on('input', ()=>{
+              this.update_table(this.fields);
+            });
+          }
+        }
+
+        update_table(array){
+          if (array === this.selections) {
+            for (var i = 0; i < 3; i++) {
+              this.tds[i].html(array[i].val())
+            }
+          }else{
+            for (var i = 0; i < 3; i++) {
+              this.tds[i].html(this.selections[i].val())
+            }
+            for (var i = 3; i < this.tds.length; i++) {
+              this.tds[i].html(array[i-3].val())
+            }
+          }
+        }
+
+        update_all(){
+          this.update_selections ();
+          this.update_fields();
+        }
+
+    }
+
+    let events = new handleEvents();
+    events.update_all();
+
+
     $('.save').click(() => {
       var genre = $('.genre').val();
       var type = $('.type').val();

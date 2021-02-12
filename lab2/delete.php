@@ -1,8 +1,8 @@
 <?php
 $id = $_GET['id']; // get id through query string
 $servername = "127.0.0.1";
-$username = "suren";
-$password = "Root@3859";
+$username = "root";
+$password = "";
 $dbname = "art";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
