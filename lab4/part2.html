@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Lab4 Part 2</title>
+  </head>
+  <body>
+
+    <div id="map"></div>
+    <div id="map1"></div>
+    <div id="map2"></div>
+
+        <script type="text/javascript">
+          function initMap(){
+              var location = {lat: 43.7272, lng: -79.4121};
+                        var map = new google.maps.Map(document.getElementById("map"),
+                                     { zoom: 14, center: location});
+                               var marker = new google.maps.Marker(
+                                     {position: location, map: map});
+
+                   var location2 = {lat: 43.7272, lng: -79.4121};
+           var map2 = new google.maps.Map(document.getElementById("map1"),
+                          { zoom: 14, center: location});
+
+                   var marker2 = new google.maps.Marker(
+                          {position: location2, map: map2});
+
+  var infoWindow = new google.maps.InfoWindow(
+                          { content: "<h5> source </h5>"});
+                    marker2.addListener("click", function()
+                          { infoWindow.open(map2, marker2); });
+
+          var location3 = {lat: 43.7272, lng: -79.4121};
+          var location4 = {lat: 43.7575, lng: -79.3910};
+
+   var map3 = new google.maps.Map(document.getElementById("map2"),
+                 { zoom: 12, center: location3});
+
+          var marker3 = new google.maps.Marker(
+                 {position: location3, map: map3});
+var infoWindow2 = new google.maps.InfoWindow(
+                 { content: "<h5> source </h5>"});
+           marker3.addListener("click", function()
+                 { infoWindow2.open(map3, marker3); });
+
+
+           var marker4 = new google.maps.Marker(
+                 {position: location4, map: map3});
+var infoWindow3 = new google.maps.InfoWindow(
+                 { content: "<h5> dest </h5>"});
+                 marker4.addListener("click", function()
+                       { infoWindow3.open(map3, marker4); });
+
+    }
+        </script>
+
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqZTUi_ipGJ2YdWfEJi3cLUcpa3OfbCkI&callback=initMap&libraries=places&v=weekly"
+        async
+        ></script>
+        <style media="screen">
+          #map{
+            width: 500px;
+            height: 500px;
+          }
+          #map1{
+            width: 500px;
+            height: 500px;
+          }
+          #map2{
+            width: 500px;
+            height: 500px;
+          }
+        </style>
+  </body>
+</html>
