@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Detecting brwoser in Javascript</title>
+    </head>
+    <body>
+        <h2>Your currently showing this web page on:</h2>
+
+        <div id="browser"></div>
+        <script>
+            document.getElementById('browser').innerHTML = navigator.userAgent || 'Unrecognized browser';
+        </script>
+    </body>
+</html>
