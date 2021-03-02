@@ -8,7 +8,13 @@
 
         <div id="browser"></div>
         <script>
-            document.getElementById('browser').innerHTML = navigator.userAgent || 'Unrecognized browser';
+            var userAgent = navigator.userAgent;
+            var userBrowser = 'Unrecognized browser'
+            if (userAgent.indexOf('Chrome') > -1) userBrowser = 'Chrome';
+            else if (userAgent.indexOf('Firefox') > -1) userBrowser = 'Firefox';
+            else if (userAgent.indexOf('Trident') > -1) userBrowser = 'Trident';
+            else if (userAgent.indexOf('Safari') > -1) userBrowser = 'Safari';
+            document.getElementById('browser').innerHTML = userBrowser;
         </script>
     </body>
 </html>
